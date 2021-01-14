@@ -44,8 +44,31 @@ public class Fraction {
          Fraction frac = new Fraction();
 
          // set the values
-         frac.setNumerator(1);
-         frac.setDenominator(3);
+         //frac.setNumerator(1);
+         //frac.setDenominator(3);
+
+	int argX = 0;
+	int argY = 0;
+
+	// my additions
+	if (args.length == 2) {
+		//int argX = 0;
+		//int argY = 0;
+		try {
+			argX = Integer.parseInt(args[0]);
+			argY = Integer.parseInt(args[1]);
+		} catch (Exception e) {
+			System.out.println("Arguments: " + args[0] + args[1] + " are not of the correct type");
+			System.exit(1);
+		}
+	} else {
+		argX = 1;
+		argY = 3;
+	}
+
+	frac.setNumerator(argX);
+	frac.setDenominator(argY);
+
 
          // print it
          System.out.print("The fraction is: ");
