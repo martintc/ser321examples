@@ -23,3 +23,5 @@ Json with your Java programs.
 You should execute the Java program with:
 gradle GroupJson:run
 
+On Macos:
+gradle run
