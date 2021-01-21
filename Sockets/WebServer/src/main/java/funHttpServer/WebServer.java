@@ -25,6 +25,7 @@ import java.util.Random;
 import java.util.Map;
 import java.util.LinkedHashMap;
 import java.nio.charset.Charset;
+import org.json.*;
 
 class WebServer {
   public static void main(String args[]) {
@@ -247,6 +248,28 @@ class WebServer {
           // amehlhase, 46384989 -> memoranda
           // amehlhase, 46384989 -> ser316examples
           // amehlhase, 46384989 -> test316
+
+          JSONArray repoArray = new JSONArray(json);
+
+          JSONArray newArray = new JSONArray();
+
+
+          builder.append("\n\n");
+
+          for (int i = 0; i < repoArray.length(); i++) {
+            JSONObject repo = repoArray.getJSONObject(i);
+            String repoName = repo.getString("name");
+            Integer repoID = repo.getInt("id");
+            String repoOwnerName;
+            JSONObject ownerRepo = repo.getJSONObject("owner");
+            repoOwnerName = ownerRepo.getString("login");
+
+            builder.append("Repo: " + repoName + "\n");
+            builder.append("id: " + repoID + "\n"); 
+            builder.append("owner: " + repoOwnerName + "\n");
+            builder.append("\n");
+          }
+
 
         } else {
           // if the request is not recognized at all
